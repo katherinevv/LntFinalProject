@@ -45,43 +45,42 @@ class InvoiceController extends Controller
         return redirect()->route('show', $invoice->id);
     }
 
-    public function edit($id)
-    {
-        $invoice = Invoice::findOrFail($id);
+    // public function edit($id)
+    // {
+    //     $invoice = Invoice::findOrFail($id);
+    //     return view('editInvoice', compact('invoice'));
+    // }
 
-        return view('edit', compact('invoice'));
-    }
+    // public function update(Request $request, $id)
+    // {
+    //     $request->validate([
+    //         'kategori_barang' => 'required',
+    //         'nama_barang' => 'required',
+    //         'kuantitas' => 'required|numeric',
+    //         'alamat_pengiriman' => 'required|min:10|max:100',
+    //         'kode_pos' => 'required|digits:5',
+    //     ]);
 
-    public function update(Request $request, $id)
-    {
-        $request->validate([
-            'kategori_barang' => 'required',
-            'nama_barang' => 'required',
-            'kuantitas' => 'required|numeric',
-            'alamat_pengiriman' => 'required|min:10|max:100',
-            'kode_pos' => 'required|digits:5',
-        ]);
+    //     $invoice = Invoice::findOrFail($id);
+    //     $invoice->kategori_barang = $request->kategori_barang;
+    //     $invoice->nama_barang = $request->nama_barang;
+    //     $invoice->harga_barang = $request->harga_barang;
+    //     $invoice->kuantitas = $request->kuantitas;
+    //     $invoice->alamat_pengiriman = $request->alamat_pengiriman;
+    //     $invoice->kode_pos = $request->kode_pos;
+    //     $invoice->subtotal_harga = $invoice->calculateSubtotal();
+    //     $invoice->total_harga = $invoice->calculateTotalPrice();
+    //     $invoice->saveInvoice();
 
-        $invoice = Invoice::findOrFail($id);
-        $invoice->kategori_barang = $request->kategori_barang;
-        $invoice->nama_barang = $request->nama_barang;
-        $invoice->harga_barang = $request->harga_barang;
-        $invoice->kuantitas = $request->kuantitas;
-        $invoice->alamat_pengiriman = $request->alamat_pengiriman;
-        $invoice->kode_pos = $request->kode_pos;
-        $invoice->subtotal_harga = $invoice->calculateSubtotal();
-        $invoice->total_harga = $invoice->calculateTotalPrice();
-        $invoice->saveInvoice();
-
-        return redirect()->route('show', $invoice->id);
-    }
+    //     return redirect()->route('show', $invoice->id);
+    // }
 
     public function destroy($id)
     {
         $invoice = Invoice::findOrFail($id);
         $invoice->delete();
 
-        return response()->json(["success" => 200]);
+        return redirect()->route('show', $invoice->id);
     }
 
 

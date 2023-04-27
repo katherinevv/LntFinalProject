@@ -66,7 +66,10 @@
 
             <div class="mb-3">
                 <label for="exampleInputHarga" class="form-label">Harga Barang</label>
-                <input type="number" class="form-control @error('harga_barang') is-invalid @enderror" id="exampleInputHarga" name="harga_barang" value="{{$barang->harga_barang}}">
+                <div class="input-group">
+                    <span class="input-group-text">Rp.</span>
+                    <input type="text" value="{{ old('harga_barang') }}" class="form-control @error('harga_barang') is-invalid @enderror" id="exampleInputHarga" name="harga_barang" aria-label="Harga Barang" aria-describedby="basic-addon2">
+                </div>
             </div>
 
             @error('harga_barang')

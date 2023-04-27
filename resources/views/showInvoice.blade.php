@@ -47,13 +47,14 @@
             </form>
             </div>
         </div>
-        </nav>
+    </nav>
 
         <div class="m-5">
             <h1 class="text-center">Faktur Barang</h1>
                 <table class="table">
                     <thead>
                         <tr>
+                            <th scope="col">Nomor Invoice</th>
                             <th scope="col">Nama Barang</th>
                             <th scope="col">Kuantitas</th>
                             <th scope="col">Harga</th>
@@ -62,6 +63,7 @@
                     </thead>
                     <tbody>
                             <tr>
+                                <td>{{ $invoice->nomor_invoice }}</td>
                                 <td>{{ $invoice->nama_barang }}</td>
                                 <td>{{ $invoice->kuantitas }}</td>
                                 <td>{{ $invoice->harga_barang}}</td>
@@ -76,10 +78,17 @@
                             <td>{{ $invoice->total_harga }}</td>
                         </tr>
                     </tbody>
-                </table>                
+                </table>  
 
+                {{-- <a href="{{route('edit', $invoice->id)}}" class="btn btn-success">Edit</a> --}}
+                <form action="{{route('delete', $invoice->id)}}" method="POST">
+                @csrf
+                @method('delete')
+                {{-- kalo put patch delete hrs tambahain kek atas --}}
+                <button class="btn btn-danger">Delete</button>
+                </form>              
         </div>
-
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 </body>
 </html>    

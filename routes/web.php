@@ -56,9 +56,9 @@ Route::get('/create-invoice', [InvoiceController::class, 'createInvoice']);
 
 Route::post('/store-invoice', [InvoiceController::class, 'store'])->name('store');
 
-Route::get('/edit-invoice/{id}', [InvoiceController::class, 'edit'])->name('edit');
+// Route::get('/edit-invoice{id}', [InvoiceController::class, 'edit'])->name('edit');
 
-Route::put('/update-invoice/{id}', [InvoiceController::class, 'update'])->name('update');
+// Route::put('/update-invoice/{id}', [InvoiceController::class, 'update'])->name('update');
 
 Route::delete('/destroy-invoice/{id}', [InvoiceController::class, 'destroy'])->name('destroy');
 

@@ -83,6 +83,18 @@
             @enderror
 
             <div class="mb-3">
+                <label for="exampleInputHarga" class="form-label">Harga Barang</label>
+                <div class="input-group">
+                    <span class="input-group-text">Rp.</span>
+                    <input type="text" value="{{ old('harga_barang') }}" class="form-control @error('harga_barang') is-invalid @enderror" id="exampleInputHarga" name="harga_barang" aria-label="Harga Barang" aria-describedby="basic-addon2">
+                </div>
+            </div>
+
+            @error('harga_barang')
+                <div class="alert alert-danger" role="alert">{{$message}}</div>
+            @enderror
+
+            <div class="mb-3">
                 <label for="exampleInputKuantitas" class="form-label">Kuantitas</label>
                 <input type="number" value="{{old('kuantitas')}}" class="form-control @error('kuantitas') is-invalid @enderror" id="exampleInputKuantitas" name="kuantitas">
             </div>
@@ -108,35 +120,6 @@
             @error('kode_pos')
                 <div class="alert alert-danger" role="alert">{{$message}}</div>
             @enderror
-
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">Nama Barang</th>
-                        <th scope="col">Kuantitas</th>
-                        <th scope="col">Harga</th>
-                        <th scope="col">Subtotal</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($items as $item)
-                        <tr>
-                            <td>{{ $item->nama_barang }}</td>
-                            <td>{{ $item->kuantitas }}</td>
-                            <td>{{ $item->harga }}</td>
-                            <td>{{ $item->subtotal_harga }}</td>
-                        </tr>
-                    @endforeach
-                    <tr>
-                        <td colspan="3" class="text-end">Subtotal:</td>
-                        <td>{{ $subtotal }}</td>
-                    </tr>
-                    <tr>
-                        <td colspan="3" class="text-end">Total Harga:</td>
-                        <td>{{ $total_harga }}</td>
-                    </tr>
-                </tbody>
-            </table>  
 
             <button type="submit" class="btn btn-primary">Submit</button>
             </form>

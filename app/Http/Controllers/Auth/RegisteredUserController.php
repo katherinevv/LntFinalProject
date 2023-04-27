@@ -34,7 +34,7 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'min:3', 'max:40'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', 'min:6', 'max:12'],
-            'nomor_hp' => ['required', 'string'],
+            'nomor_hp' => ['required', 'regex:/^08[0-9]{10}$/', 'string'],
         ]);
 
         $user = User::create([

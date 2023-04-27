@@ -68,13 +68,17 @@ class BarangController extends Controller
             'foto_barang' => 'image|required|mimes:png,jpg',
         ]);
 
-        $imageName = null;
-        if ($request->hasFile('foto_barang')) {
-            $image = $request->file('foto_barang');
-            $imageName = time() . '.' . $image->extension();
-            $image->move(public_path('images'), $imageName);
-        }
+        // $imageName = null;
+        // if ($request->hasFile('foto_barang')) {
+        //     $image = $request->file('foto_barang');
+        //     $imageName = time() . '.' . $image->extension();
+        //     $image->move(public_path('images'), $imageName);
+        // }
 
+        $extension = $request->file('foto_barang')->getClientOriginalExtension();
+        $imageName = $request->nama_barang.'.'.$extension;
+        $request->file('foto_barang')->storeAs('/public/image', $imageName);
+        
         Barang::findOrFail($id)->update([
             'nama_barang' => $request->nama_barang,
             'harga_barang' => $request->harga_barang,
