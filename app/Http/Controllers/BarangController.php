@@ -78,7 +78,7 @@ class BarangController extends Controller
         $extension = $request->file('foto_barang')->getClientOriginalExtension();
         $imageName = $request->nama_barang.'.'.$extension;
         $request->file('foto_barang')->storeAs('/public/image', $imageName);
-        
+
         Barang::findOrFail($id)->update([
             'nama_barang' => $request->nama_barang,
             'harga_barang' => $request->harga_barang,
